@@ -26,7 +26,6 @@ public class WebstaurantstoreTest {
 
     @Test
     public void testSearchAndAddToCart() throws Exception {
-        try {
             //Go to https://www.webstaurantstore.com/
             System.out.println("Launch Webstaurantstore");
             driver.get("https://www.webstaurantstore.com/");
@@ -55,7 +54,7 @@ public class WebstaurantstoreTest {
             }
             //Add the last of found items to Cart
             List<WebElement> add_item = driver.findElements(By.xpath("//input[@name='addToCartButton']"));
-            WebElement add_last_item = add_item.get(add_item.size()-1);
+            WebElement add_last_item = add_item.getLast();
             add_last_item.click();
 
             //Go to the Cart and check that we add last item
@@ -77,8 +76,6 @@ public class WebstaurantstoreTest {
             Assert.assertTrue(empty_cart_text.isDisplayed());
             System.out.println(empty_cart_text.getText());
             Assert.assertEquals("Your cart is empty.", empty_cart_text.getText());
-        } catch (Exception e) {
-        }
     }
 
     @AfterTest
